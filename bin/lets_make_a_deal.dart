@@ -25,10 +25,10 @@ Random random = new Random();
 void main() {
   for (int i = 0; i < TRIALS; i++) {
     // randomly place grand prize behind a door
-    grandPrizeDoor = random.nextInt(3) + 1;
+    grandPrizeDoor = random.nextInt(doors.length) + 1;
 
     // randomly guess a door
-    guessDoor = random.nextInt(3) + 1;
+    guessDoor = random.nextInt(doors.length) + 1;
 
     // construct List of possible doors to eliminate
     eliminationDoors = doors.where((int door) => door != grandPrizeDoor && door != guessDoor).toList(growable: false);
@@ -43,7 +43,7 @@ void main() {
     if (newGuessDoor == grandPrizeDoor) {
       correct++;
     }
-    
+
 //    print("""
 //      grandPrizeDoor: $grandPrizeDoor
 //      guessDoor: $guessDoor
@@ -53,6 +53,6 @@ void main() {
 //      correct: $correct
 //    """);
   }
-  
+
   print("The percentage of correct guesses was ${(correct / TRIALS) * 100}%");
 }
